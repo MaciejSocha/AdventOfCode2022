@@ -1,11 +1,8 @@
 import pandas as pd
 import Methods
 
-
-def main():
-    data = pd.read_table("example.txt", header=None, delimiter=" ")
-    for game in data.values:
-        print(game)
-        print(Methods.check_winning(game))
-
-
+data = pd.read_table("input.txt", header=None, delimiter=" ")
+score = 0
+for game in data.values:
+    score = score + Methods.check_winning(game) + Methods.give_points(game[1])
+print(score)
