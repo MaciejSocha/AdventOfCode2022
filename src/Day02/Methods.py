@@ -5,25 +5,25 @@ def check_winning(line):
                 return 3
             else:
                 if line[0] == 'B':
-                    return 0
+                    return 1
                 else:
-                    return 6
+                    return 2
         case 'Y':
             if line[0] == 'B':
-                return 3
+                return 2
             else:
                 if line[0] == 'C':
-                    return 0
+                    return 3
                 else:
-                    return 6
+                    return 1
         case 'Z':
             if line[0] == 'C':
-                return 3
+                return 1
             else:
                 if line[0] == 'A':
-                    return 0
+                    return 2
                 else:
-                    return 6
+                    return 3
         case _:
             return None
 
@@ -31,10 +31,10 @@ def check_winning(line):
 def give_points(shape):
     match shape:
         case 'X':
-            return 1
+            return 0
         case 'Y':
-            return 2
-        case 'Z':
             return 3
+        case 'Z':
+            return 6
         case _:
             return None
