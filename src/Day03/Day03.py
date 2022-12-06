@@ -15,7 +15,15 @@ for line in data.values:
     else:
         sums = sums + Methods.calc_scoring_upper(duplicates[0])
 
+# print(sums)
+
+sums = 0
+for one, two, three in zip(*[iter(data.values)]*3):
+    duplicates1 = [x for x in one[0] if x in two[0]]
+    duplicates2 = [x for x in three[0] if x in duplicates1]
+    if duplicates2[0].islower():
+        sums = sums + Methods.calc_scoring_lower(duplicates2[0])
+    else:
+        sums = sums + Methods.calc_scoring_upper(duplicates2[0])
 print(sums)
-
-
 
