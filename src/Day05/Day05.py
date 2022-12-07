@@ -1,9 +1,9 @@
 import Read
 
 
-data = Read.read_moves("example.txt")
+data = Read.read_moves("input.txt")
 
-stacks = Read.read_stacks("exmaple_header.txt")
+stacks = Read.read_stacks("input_header.txt")
 
 print(data)
 print(stacks)
@@ -17,12 +17,27 @@ for m in data.values:
         stacks[m[1]-1][j] = None
         j = 0
         if stacks[m[2]-1][j] is not None:
-            stacks[m[2]-1].append(temp)
-            stacks[m[1]-1].append(None)
-            stacks[m[0]-1].append(None)
+            for s in stacks:
+                if s is stacks[m[2]-1]:
+                    stacks[m[2]-1].insert(0, temp)
+                else:
+                    s.insert(0, None)
         else:
+            llen = stacks[m[2]-1].__len__()
             while stacks[m[2]-1][j] is None:
                 j = j + 1
-            j = j - 1
+                if j >= stacks[m[2]-1].__len__():
+                    break
+            if j != 0:
+                j = j - 1
             stacks[m[2]-1][j] = temp
 print(stacks)
+
+out = ""
+for s in stacks:
+    for letter in s:
+        if letter is not None:
+            out = out + letter
+            break
+
+print(out)
